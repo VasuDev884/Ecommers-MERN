@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useState} from 'react';
 import styled from 'styled-components';
 import { Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -299,6 +299,12 @@ const products = [
 ];
 
 export default function ProductPage() {
+    const [showMore , setShowMore] = useState(8);
+    const [max , setMax] = useState();
+    const handleShowMore = () => {
+      setShowMore((prev) => prev + 4);
+    }
+
     return (
         <PageWrapper>
             <Title>Shop Now, Goodlook Later</Title>
@@ -313,7 +319,7 @@ export default function ProductPage() {
             </FilterBar>
 
             <ProductGrid>
-                {products.slice(0,8).map(product => (
+                {products.slice(0,showMore).map(product => (
               <Link to='/details' style={{ all: 'unset'}}>
                     <ProductCard key={product.id}>
                         {product.badge && (
@@ -330,8 +336,8 @@ export default function ProductPage() {
                     </Link>
                 ))}
             </ProductGrid>
-
-            <ViewMore>View more</ViewMore>
+            
+            <ViewMore onClick={()=>handleShowMore()}>View more</ViewMore>
         </PageWrapper>
     );
 }

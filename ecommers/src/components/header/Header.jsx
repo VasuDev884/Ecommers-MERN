@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const HeaderContainer = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
@@ -26,9 +26,13 @@ const Logo = styled.div`
 const Nav = styled.nav`
   display: flex;
   gap: 24px;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
 `;
 
-const NavLink = styled.div`
+const NavLink = styled(Link)`
   font-size: 14px;
   font-weight: 500;
   color: #000;
@@ -43,22 +47,60 @@ const Cart = styled.div`
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 14px;
+`;
+
+const MobileMenuIcon = styled.div`
+  display: none;
+
+  @media (max-width: 480px) {
+    display: flex;
+    cursor: pointer;
+  }
+`;
+
+const MobileNav = styled.div`
+  position: absolute;
+  top: 72px;
+  left: 0;
+  width: 100%;
+  background: white;
+  display: ${({ open }) => (open ? 'flex' : 'none')};
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+
+  @media (min-width: 480px) {
+    display: none;
+  }
 `;
 
 export default function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <HeaderContainer>
-      <Logo><Link to='/' style={{ all: 'unset'}}>Bertóoz</Link></Logo>
-      <Nav>
-        <NavLink href="#"><Link to='/product' style={{ all: 'unset'}}>MEN</Link> </NavLink>
-        <NavLink href="#">WOMAN</NavLink>
-        <NavLink href="#">KIDS</NavLink>
-        <NavLink href="#">SALE</NavLink>
-      </Nav>
-      <Cart>
-        <ShoppingCart size={20} />
-      </Cart>
-    </HeaderContainer>
+    <>
+      <HeaderContainer>
+        <Logo><Link to='/' style={{ all: 'unset' }}>Bertóoz</Link></Logo>
+        <Nav>
+          <NavLink to="/product">MEN</NavLink>
+          <NavLink to="#">WOMAN</NavLink>
+          <NavLink to="#">KIDS</NavLink>
+          <NavLink to="#">SALE</NavLink>
+        </Nav>
+        <MobileMenuIcon onClick={() => setMenuOpen(!menuOpen)}>
+          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+        </MobileMenuIcon>
+        <Cart>
+          <ShoppingCart size={20} />
+        </Cart>
+      </HeaderContainer>
+      <MobileNav open={menuOpen}>
+        <NavLink to="/product" onClick={() => setMenuOpen(false)}>MEN</NavLink>
+        <NavLink to="#" onClick={() => setMenuOpen(false)}>WOMAN</NavLink>
+        <NavLink to="#" onClick={() => setMenuOpen(false)}>KIDS</NavLink>
+        <NavLink to="#" onClick={() => setMenuOpen(false)}>SALE</NavLink>
+      </MobileNav>
+    </>
   );
 }

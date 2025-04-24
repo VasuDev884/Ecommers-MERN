@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom'
 import styled from 'styled-components';
 import Shoes from '../../assets/71dJyM5dPCL._AC_UF350_350_QL50_-removebg-preview.png'
 import { ArrowLeft, ShoppingCart } from 'lucide-react';
@@ -90,13 +91,15 @@ const AddToCart = styled.button`
 `;
 
 export default function ProductDetail() {
+  const navigate = useNavigate();  
   const [selectedSize, setSelectedSize] = useState("42.5");
   const sizes = ["40", "41", "42", "42.5", "43"];
+
 
   return (
     <Wrapper>
       <ImageWrapper>
-        <BackLink>
+        <BackLink onClick={() => navigate(-1)}>
           <ArrowLeft size={16} />
           Back
         </BackLink>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import styled from 'styled-components';
 import Header from '../../assets/pexels-photo-4065512.jpeg';
 import shoes from  '../../assets/71OEQwAu0-L._AC_UF1000_1000_QL80_-removebg-preview.png';
@@ -157,6 +157,15 @@ const Footer = styled.footer`
 `;
 
 export default function BertoozPage() {
+
+  const [showMore , setShowMore] = useState(8);
+
+  const handleShowMore = () => {
+    setShowMore((prev) => prev + 4);
+  }
+
+
+
   return (
     <Container>
       <Hero>
