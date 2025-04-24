@@ -13,7 +13,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@": "/ecommers/src",
+      "@": "/src",
     },
   },
 });
