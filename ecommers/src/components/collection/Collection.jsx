@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Header from '../../assets/pexels-photo-4065512.jpeg';
 import shoes from  '../../assets/71OEQwAu0-L._AC_UF1000_1000_QL80_-removebg-preview.png';
+import { Link } from 'react-router-dom';
 
 
 const Container = styled.div`
@@ -172,7 +173,7 @@ export default function BertoozPage() {
               <img src={shoes} alt="product" />
               <h3>Product #{index + 1}</h3>
               <p>$199.00</p>
-          <button>Shop Collection</button>
+          <button> <Link to='/details'>Show Now</Link> </button>
             </ProductCard>
           ))}
         </ProductsGrid>

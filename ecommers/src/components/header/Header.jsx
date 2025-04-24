@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ShoppingCart } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const HeaderContainer = styled.header`
   position: fixed;
@@ -27,7 +28,7 @@ const Nav = styled.nav`
   gap: 24px;
 `;
 
-const NavLink = styled.a`
+const NavLink = styled.div`
   font-size: 14px;
   font-weight: 500;
   color: #000;
@@ -48,9 +49,9 @@ const Cart = styled.div`
 export default function Header() {
   return (
     <HeaderContainer>
-      <Logo>Bertóoz</Logo>
+      <Logo><Link to='/' style={{color:'black' , textDecoration:'none'}}>Bertóoz</Link></Logo>
       <Nav>
-        <NavLink href="#">MEN</NavLink>
+        <NavLink href="#"><Link to='/product' style={{color:'black' , textDecoration:'none'}}>MEN</Link> </NavLink>
         <NavLink href="#">WOMAN</NavLink>
         <NavLink href="#">KIDS</NavLink>
         <NavLink href="#">SALE</NavLink>
