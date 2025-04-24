@@ -49,9 +49,9 @@ const Cart = styled.div`
 export default function Header() {
   return (
     <HeaderContainer>
-      <Logo><Link to='/' style={{color:'black' , textDecoration:'none'}}>Bertóoz</Link></Logo>
+      <Logo><Link to='/' style={{ all: 'unset'}}>Bertóoz</Link></Logo>
       <Nav>
-        <NavLink href="#"><Link to='/product' style={{color:'black' , textDecoration:'none'}}>MEN</Link> </NavLink>
+        <NavLink href="#"><Link to='/product' style={{ all: 'unset'}}>MEN</Link> </NavLink>
         <NavLink href="#">WOMAN</NavLink>
         <NavLink href="#">KIDS</NavLink>
         <NavLink href="#">SALE</NavLink>

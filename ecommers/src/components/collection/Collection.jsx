@@ -173,7 +173,7 @@ export default function BertoozPage() {
               <img src={shoes} alt="product" />
               <h3>Product #{index + 1}</h3>
               <p>$199.00</p>
-          <button> <Link to='/details'>Show Now</Link> </button>
+          <button> <Link to='/details' style={{ all: 'unset'}}>Show Now</Link> </button>
             </ProductCard>
           ))}
         </ProductsGrid>
