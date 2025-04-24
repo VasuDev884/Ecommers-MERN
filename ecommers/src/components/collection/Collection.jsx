@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Header from '../../assets/pexels-photo-4065512.jpeg';
 import shoes from  '../../assets/71OEQwAu0-L._AC_UF1000_1000_QL80_-removebg-preview.png';
 
 
@@ -11,8 +12,9 @@ const Container = styled.div`
 `;
 
 const Hero = styled.section`
-  background-image: url(shoes);
+  background-image: url(${ Header });
   background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
   color: white;
   padding: 6rem 2rem;
@@ -57,12 +59,12 @@ const Title = styled.h2`
 
 const ProductsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
 `;
 
 const ProductCard = styled.div`
-  background: #fff;
+  background: #e1e1e19b;
   border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -83,6 +85,18 @@ const ProductCard = styled.div`
     font-size: 0.875rem;
     color: #555;
     margin-bottom: 1rem;
+  }
+  button {
+    width: 120px;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    margin-bottom: 10px;
+  }
+  button:hover {
+    background: #000;
+    color: #fff;
+    cursor: pointer;
   }
 `;
 
@@ -106,6 +120,11 @@ const PromoBanner = styled.div`
     padding: 0.5rem 1.25rem;
     font-weight: bold;
     border-radius: 0.375rem;
+  }
+  button:hover {
+    background: #484848;
+    color: #fff;
+    cursor: pointer;
   }
 `;
 
@@ -153,6 +172,7 @@ export default function BertoozPage() {
               <img src={shoes} alt="product" />
               <h3>Product #{index + 1}</h3>
               <p>$199.00</p>
+          <button>Shop Collection</button>
             </ProductCard>
           ))}
         </ProductsGrid>
