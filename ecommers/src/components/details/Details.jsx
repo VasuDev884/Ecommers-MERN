@@ -3,6 +3,7 @@ import {useNavigate} from 'react-router-dom'
 import styled from 'styled-components';
 import Shoes from '../../assets/71dJyM5dPCL._AC_UF350_350_QL50_-removebg-preview.png'
 import { ArrowLeft, ShoppingCart } from 'lucide-react';
+import Cart from '../cart/Cart';
 
 const Wrapper = styled.div`
   max-width: 1200px;
@@ -14,6 +15,7 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
   padding-top: 80px;
 `;
+
 
 const ImageWrapper = styled.div`
   flex: 1;
@@ -91,49 +93,66 @@ const AddToCart = styled.button`
 `;
 
 export default function ProductDetail() {
-  const navigate = useNavigate();  
-  const [selectedSize, setSelectedSize] = useState("42.5");
-  const sizes = ["40", "41", "42", "42.5", "43"];
+  const navigate = useNavigate();
+  const [selectedSize, setSelectedSize] = useState('42.5');
+  const [cart, setCart] = useState([]);
+  const sizes = ['40', '41', '42', '42.5', '43'];
 
+  // Define product object
+  const product = {
+    id: 1,
+    name: "Puma Wmns Caven 2.0 VTG 'Black White'",
+    price: 140,
+    size: selectedSize,
+    image: Shoes,
+  };
+
+  const addToCart = () => {
+    setCart((prev) => [...prev, product]);
+    
+  };
 
   return (
-    <Wrapper>
-      <ImageWrapper>
-        <BackLink onClick={() => navigate(-1)}>
-          <ArrowLeft size={16} />
-          Back
-        </BackLink>
-        <ProductImage src={Shoes} alt="Puma Shoes" />
-      </ImageWrapper>
+    <>
+      <Wrapper>
+        <ImageWrapper>
+          <BackLink onClick={() => navigate(-1)}>
+            <ArrowLeft size={16} />
+            Back
+          </BackLink>
+          <ProductImage src={Shoes} alt="Puma Shoes" />
+        </ImageWrapper>
 
-      <Info>
-        <Title>Puma Wmns Caven 2.0 VTG 'Black White'</Title>
-        <Description>
-          The sneakers are made of synthetic leather. The Caven 2.0 VTG is designed with simplicity,
-          soft, comfortable materials and a streamlined shape that nods to 80s styling.
-          SOFTFOAM+ technology for maximum comfort.
-        </Description>
+        <Info>
+          <Title>{product.name}</Title>
+          <Description>
+            The sneakers are made of synthetic leather. The Caven 2.0 VTG is designed with simplicity,
+            soft, comfortable materials and a streamlined shape that nods to 80s styling.
+            SOFTFOAM+ technology for maximum comfort.
+          </Description>
 
-        <SectionLabel>Select Size</SectionLabel>
-        <SizeList>
-          {sizes.map(size => (
-            <SizeBox
-              key={size}
-              selected={selectedSize === size}
-              onClick={() => setSelectedSize(size)}
-              disabled={size === "40"}
-            >
-              {size}
-            </SizeBox>
-          ))}
-        </SizeList>
+          <SectionLabel>Select Size</SectionLabel>
+          <SizeList>
+            {sizes.map((size) => (
+              <SizeBox
+                key={size}
+                selected={selectedSize === size}
+                onClick={() => setSelectedSize(size)}
+                disabled={size === '40'}
+              >
+                {size}
+              </SizeBox>
+            ))}
+          </SizeList>
 
-        <Price>Price: $140</Price>
-        <AddToCart>
-          <ShoppingCart size={18} />
-          Add to Cart
-        </AddToCart>
-      </Info>
-    </Wrapper>
+          <Price>Price: ${product.price}</Price>
+          <AddToCart onClick={addToCart}>
+            <ShoppingCart size={18} />
+            Add to Cart
+          </AddToCart>
+        </Info>
+      </Wrapper>
+
+    </>
   );
 }

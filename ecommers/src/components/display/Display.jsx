@@ -2,6 +2,7 @@ import React , {useState} from 'react';
 import styled from 'styled-components';
 import { Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Shoes from '../../assets/71dJyM5dPCL._AC_UF350_350_QL50_-removebg-preview.png';
 
 const PageWrapper = styled.div`
   padding: 40px 24px;
@@ -109,7 +110,7 @@ const products = [
         id: 1,
         title: "Nike Air Max 90",
         price: "Rp 1,799,000",
-        image: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/0f819cfc-caae-4997-802e-41a410b28c0a/air-max-90-shoes.png",
+        image: `${Shoes}`,
         rating: "4.9 • 12 Items Sold",
         badge: "Just in"
     },
@@ -117,7 +118,7 @@ const products = [
         id: 2,
         title: "Nike Alphafly 2",
         price: "Rp 4,089,000",
-        image: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/2c8e6fa2-c9fc-4e13-a47c-9edb7fdf982b/alphafly-2-road-racing-shoes-J9s5vZ.png",
+        image: `${Shoes}`,
         rating: "4.9 • 120 Items Sold",
         badge: "Sold out"
     },
@@ -125,7 +126,7 @@ const products = [
         id: 2,
         title: "Nike Alphafly 2",
         price: "Rp 4,089,000",
-        image: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/2c8e6fa2-c9fc-4e13-a47c-9edb7fdf982b/alphafly-2-road-racing-shoes-J9s5vZ.png",
+        image: `${Shoes}`,
         rating: "4.9 • 120 Items Sold",
         badge: "Sold out"
     },
@@ -133,46 +134,15 @@ const products = [
         id: 2,
         title: "Nike Alphafly 2",
         price: "Rp 4,089,000",
-        image: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/2c8e6fa2-c9fc-4e13-a47c-9edb7fdf982b/alphafly-2-road-racing-shoes-J9s5vZ.png",
+        image: `${Shoes}`,
         rating: "4.9 • 120 Items Sold",
         badge: "Sold out"
     },
     {
-        id: 2,
-        title: "Nike Alphafly 2",
-        price: "Rp 4,089,000",
-        image: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/2c8e6fa2-c9fc-4e13-a47c-9edb7fdf982b/alphafly-2-road-racing-shoes-J9s5vZ.png",
-        rating: "4.9 • 120 Items Sold",
-        badge: "Sold out"
-    },
-    {
-        id: 2,
-        title: "Nike Alphafly 2",
-        price: "Rp 4,089,000",
-        image: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/2c8e6fa2-c9fc-4e13-a47c-9edb7fdf982b/alphafly-2-road-racing-shoes-J9s5vZ.png",
-        rating: "4.9 • 120 Items Sold",
-        badge: "Sold out"
-    },
-    {
-        id: 2,
-        title: "Nike Alphafly 2",
-        price: "Rp 4,089,000",
-        image: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/2c8e6fa2-c9fc-4e13-a47c-9edb7fdf982b/alphafly-2-road-racing-shoes-J9s5vZ.png",
-        rating: "4.9 • 120 Items Sold",
-        badge: "Sold out"
-    },
-    {
-        id: 2,
-        title: "Nike Alphafly 2",
-        price: "Rp 4,089,000",
-        image: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/2c8e6fa2-c9fc-4e13-a47c-9edb7fdf982b/alphafly-2-road-racing-shoes-J9s5vZ.png",
-        rating: "4.9 • 120 Items Sold",
-        badge: "Sold out"
-    },  {
       id: 1,
       title: "Nike Air Max 90",
       price: "Rp 1,799,000",
-      image: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/0f819cfc-caae-4997-802e-41a410b28c0a/air-max-90-shoes.png",
+      image: `${Shoes}`,
       rating: "4.9 • 12 Items Sold",
       badge: "Just in"
   },
@@ -180,7 +150,7 @@ const products = [
       id: 2,
       title: "Nike Alphafly 2",
       price: "Rp 4,089,000",
-      image: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/2c8e6fa2-c9fc-4e13-a47c-9edb7fdf982b/alphafly-2-road-racing-shoes-J9s5vZ.png",
+      image: `${Shoes}`,
       rating: "4.9 • 120 Items Sold",
       badge: "Sold out"
   },
@@ -188,7 +158,7 @@ const products = [
       id: 2,
       title: "Nike Alphafly 2",
       price: "Rp 4,089,000",
-      image: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/2c8e6fa2-c9fc-4e13-a47c-9edb7fdf982b/alphafly-2-road-racing-shoes-J9s5vZ.png",
+      image: `${Shoes}`,
       rating: "4.9 • 120 Items Sold",
       badge: "Sold out"
   },
@@ -196,39 +166,7 @@ const products = [
       id: 2,
       title: "Nike Alphafly 2",
       price: "Rp 4,089,000",
-      image: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/2c8e6fa2-c9fc-4e13-a47c-9edb7fdf982b/alphafly-2-road-racing-shoes-J9s5vZ.png",
-      rating: "4.9 • 120 Items Sold",
-      badge: "Sold out"
-  },
-  {
-      id: 2,
-      title: "Nike Alphafly 2",
-      price: "Rp 4,089,000",
-      image: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/2c8e6fa2-c9fc-4e13-a47c-9edb7fdf982b/alphafly-2-road-racing-shoes-J9s5vZ.png",
-      rating: "4.9 • 120 Items Sold",
-      badge: "Sold out"
-  },
-  {
-      id: 2,
-      title: "Nike Alphafly 2",
-      price: "Rp 4,089,000",
-      image: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/2c8e6fa2-c9fc-4e13-a47c-9edb7fdf982b/alphafly-2-road-racing-shoes-J9s5vZ.png",
-      rating: "4.9 • 120 Items Sold",
-      badge: "Sold out"
-  },
-  {
-      id: 2,
-      title: "Nike Alphafly 2",
-      price: "Rp 4,089,000",
-      image: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/2c8e6fa2-c9fc-4e13-a47c-9edb7fdf982b/alphafly-2-road-racing-shoes-J9s5vZ.png",
-      rating: "4.9 • 120 Items Sold",
-      badge: "Sold out"
-  },
-  {
-      id: 2,
-      title: "Nike Alphafly 2",
-      price: "Rp 4,089,000",
-      image: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/2c8e6fa2-c9fc-4e13-a47c-9edb7fdf982b/alphafly-2-road-racing-shoes-J9s5vZ.png",
+      image: `${Shoes}`,
       rating: "4.9 • 120 Items Sold",
       badge: "Sold out"
   },
@@ -236,7 +174,7 @@ const products = [
     id: 1,
     title: "Nike Air Max 90",
     price: "Rp 1,799,000",
-    image: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/0f819cfc-caae-4997-802e-41a410b28c0a/air-max-90-shoes.png",
+    image: `${Shoes}`,
     rating: "4.9 • 12 Items Sold",
     badge: "Just in"
 },
@@ -244,7 +182,7 @@ const products = [
     id: 2,
     title: "Nike Alphafly 2",
     price: "Rp 4,089,000",
-    image: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/2c8e6fa2-c9fc-4e13-a47c-9edb7fdf982b/alphafly-2-road-racing-shoes-J9s5vZ.png",
+    image: `${Shoes}`,
     rating: "4.9 • 120 Items Sold",
     badge: "Sold out"
 },
@@ -252,7 +190,7 @@ const products = [
     id: 2,
     title: "Nike Alphafly 2",
     price: "Rp 4,089,000",
-    image: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/2c8e6fa2-c9fc-4e13-a47c-9edb7fdf982b/alphafly-2-road-racing-shoes-J9s5vZ.png",
+    image: `${Shoes}`,
     rating: "4.9 • 120 Items Sold",
     badge: "Sold out"
 },
@@ -260,42 +198,138 @@ const products = [
     id: 2,
     title: "Nike Alphafly 2",
     price: "Rp 4,089,000",
-    image: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/2c8e6fa2-c9fc-4e13-a47c-9edb7fdf982b/alphafly-2-road-racing-shoes-J9s5vZ.png",
+    image: `${Shoes}`,
     rating: "4.9 • 120 Items Sold",
     badge: "Sold out"
 },
 {
-    id: 2,
-    title: "Nike Alphafly 2",
-    price: "Rp 4,089,000",
-    image: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/2c8e6fa2-c9fc-4e13-a47c-9edb7fdf982b/alphafly-2-road-racing-shoes-J9s5vZ.png",
-    rating: "4.9 • 120 Items Sold",
-    badge: "Sold out"
+  id: 1,
+  title: "Nike Air Max 90",
+  price: "Rp 1,799,000",
+  image: `${Shoes}`,
+  rating: "4.9 • 12 Items Sold",
+  badge: "Just in"
 },
 {
-    id: 2,
-    title: "Nike Alphafly 2",
-    price: "Rp 4,089,000",
-    image: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/2c8e6fa2-c9fc-4e13-a47c-9edb7fdf982b/alphafly-2-road-racing-shoes-J9s5vZ.png",
-    rating: "4.9 • 120 Items Sold",
-    badge: "Sold out"
+  id: 2,
+  title: "Nike Alphafly 2",
+  price: "Rp 4,089,000",
+  image: `${Shoes}`,
+  rating: "4.9 • 120 Items Sold",
+  badge: "Sold out"
 },
 {
-    id: 2,
-    title: "Nike Alphafly 2",
-    price: "Rp 4,089,000",
-    image: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/2c8e6fa2-c9fc-4e13-a47c-9edb7fdf982b/alphafly-2-road-racing-shoes-J9s5vZ.png",
-    rating: "4.9 • 120 Items Sold",
-    badge: "Sold out"
+  id: 2,
+  title: "Nike Alphafly 2",
+  price: "Rp 4,089,000",
+  image: `${Shoes}`,
+  rating: "4.9 • 120 Items Sold",
+  badge: "Sold out"
 },
 {
-    id: 2,
-    title: "Nike Alphafly 2",
-    price: "Rp 4,089,000",
-    image: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,q_auto:eco/2c8e6fa2-c9fc-4e13-a47c-9edb7fdf982b/alphafly-2-road-racing-shoes-J9s5vZ.png",
-    rating: "4.9 • 120 Items Sold",
-    badge: "Sold out"
-}
+  id: 2,
+  title: "Nike Alphafly 2",
+  price: "Rp 4,089,000",
+  image: `${Shoes}`,
+  rating: "4.9 • 120 Items Sold",
+  badge: "Sold out"
+},
+{
+  id: 1,
+  title: "Nike Air Max 90",
+  price: "Rp 1,799,000",
+  image: `${Shoes}`,
+  rating: "4.9 • 12 Items Sold",
+  badge: "Just in"
+},
+{
+  id: 2,
+  title: "Nike Alphafly 2",
+  price: "Rp 4,089,000",
+  image: `${Shoes}`,
+  rating: "4.9 • 120 Items Sold",
+  badge: "Sold out"
+},
+{
+  id: 2,
+  title: "Nike Alphafly 2",
+  price: "Rp 4,089,000",
+  image: `${Shoes}`,
+  rating: "4.9 • 120 Items Sold",
+  badge: "Sold out"
+},
+{
+  id: 2,
+  title: "Nike Alphafly 2",
+  price: "Rp 4,089,000",
+  image: `${Shoes}`,
+  rating: "4.9 • 120 Items Sold",
+  badge: "Sold out"
+},
+{
+  id: 1,
+  title: "Nike Air Max 90",
+  price: "Rp 1,799,000",
+  image: `${Shoes}`,
+  rating: "4.9 • 12 Items Sold",
+  badge: "Just in"
+},
+{
+  id: 2,
+  title: "Nike Alphafly 2",
+  price: "Rp 4,089,000",
+  image: `${Shoes}`,
+  rating: "4.9 • 120 Items Sold",
+  badge: "Sold out"
+},
+{
+  id: 2,
+  title: "Nike Alphafly 2",
+  price: "Rp 4,089,000",
+  image: `${Shoes}`,
+  rating: "4.9 • 120 Items Sold",
+  badge: "Sold out"
+},
+{
+  id: 2,
+  title: "Nike Alphafly 2",
+  price: "Rp 4,089,000",
+  image: `${Shoes}`,
+  rating: "4.9 • 120 Items Sold",
+  badge: "Sold out"
+},
+{
+  id: 1,
+  title: "Nike Air Max 90",
+  price: "Rp 1,799,000",
+  image: `${Shoes}`,
+  rating: "4.9 • 12 Items Sold",
+  badge: "Just in"
+},
+{
+  id: 2,
+  title: "Nike Alphafly 2",
+  price: "Rp 4,089,000",
+  image: `${Shoes}`,
+  rating: "4.9 • 120 Items Sold",
+  badge: "Sold out"
+},
+{
+  id: 2,
+  title: "Nike Alphafly 2",
+  price: "Rp 4,089,000",
+  image: `${Shoes}`,
+  rating: "4.9 • 120 Items Sold",
+  badge: "Sold out"
+},
+{
+  id: 2,
+  title: "Nike Alphafly 2",
+  price: "Rp 4,089,000",
+  image: `${Shoes}`,
+  rating: "4.9 • 120 Items Sold",
+  badge: "Sold out"
+},
 ];
 
 export default function ProductPage() {
@@ -304,6 +338,8 @@ export default function ProductPage() {
     const handleShowMore = () => {
       setShowMore((prev) => prev + 4);
     }
+
+    console.log(showMore)
 
     return (
         <PageWrapper>

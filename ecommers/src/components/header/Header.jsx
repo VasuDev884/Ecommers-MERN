@@ -47,6 +47,9 @@ const Cart = styled.div`
   display: flex;
   align-items: center;
   gap: 6px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const MobileMenuIcon = styled.div`
@@ -91,9 +94,11 @@ export default function Header() {
         <MobileMenuIcon onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </MobileMenuIcon>
+        <Link to='/shoppingCart' style={{ all: 'unset' }}>
         <Cart>
           <ShoppingCart size={20} />
         </Cart>
+        </Link>
       </HeaderContainer>
       <MobileNav open={menuOpen}>
         <NavLink to="/product" onClick={() => setMenuOpen(false)}>MEN</NavLink>

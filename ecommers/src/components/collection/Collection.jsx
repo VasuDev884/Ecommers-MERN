@@ -165,7 +165,7 @@ export default function BertoozPage() {
   }
 
 
-
+console.log(showMore)
   return (
     <Container>
       <Hero>
