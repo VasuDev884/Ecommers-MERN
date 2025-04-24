@@ -1,6 +1,7 @@
 import './App.css'
 import BertoozPage from './components/collection/Collection'
 import Header from './components/header/Header'
+import Footer from './components/footer/Footer'
 
 
 
@@ -10,6 +11,7 @@ function App() {
     <>
     <BertoozPage/>
     <Header/>
+    <Footer/>
     </>
   )
 }

@@ -184,12 +184,6 @@ export default function BertoozPage() {
           <button>Shop Collection</button>
         </PromoBanner>
       </Section>
-
-      <Footer>
-        <h3>Subscribe Us</h3>
-        <input type="email" placeholder="Enter your email" />
-        <button>Subscribe</button>
-      </Footer>
     </Container>
   );
 }
