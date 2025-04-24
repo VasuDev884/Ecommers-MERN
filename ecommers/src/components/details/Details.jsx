@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Shoes from '../../assets/71dJyM5dPCL._AC_UF350_350_QL50_-removebg-preview.png'
 import { ArrowLeft, ShoppingCart } from 'lucide-react';
 
 const Wrapper = styled.div`
@@ -99,7 +100,7 @@ export default function ProductDetail() {
           <ArrowLeft size={16} />
           Back
         </BackLink>
-        <ProductImage src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa/global/393773/01/sv01/fnd/IND/fmt/png/Puma-Women's-Caven-2.0-VTG-Sneakers" alt="Puma Shoes" />
+        <ProductImage src={Shoes} alt="Puma Shoes" />
       </ImageWrapper>
 
       <Info>
