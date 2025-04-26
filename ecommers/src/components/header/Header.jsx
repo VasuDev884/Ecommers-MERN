@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { ShoppingCart, Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { ShoppingCart, Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../redux/authSlice";
 
 const HeaderContainer = styled.header`
   position: fixed;
@@ -18,7 +20,7 @@ const HeaderContainer = styled.header`
 `;
 
 const Logo = styled.div`
-  font-family: 'Georgia', serif;
+  font-family: "Georgia", serif;
   font-size: 24px;
   font-style: italic;
 `;
@@ -67,7 +69,7 @@ const MobileNav = styled.div`
   left: 0;
   width: 100%;
   background: white;
-  display: ${({ open }) => (open ? 'flex' : 'none')};
+  display: ${({ open }) => (open ? "flex" : "none")};
   flex-direction: column;
   align-items: center;
   gap: 16px;
@@ -80,11 +82,17 @@ const MobileNav = styled.div`
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { user, isAuthenticated } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   return (
     <>
       <HeaderContainer>
-        <Logo><Link to='/' style={{ all: 'unset' }}>Bertóoz</Link></Logo>
+        <Logo>
+          <Link to="/" style={{ all: "unset" }}>
+            Bertóoz
+          </Link>
+        </Logo>
         <Nav>
           <NavLink to="/product">MEN</NavLink>
           <NavLink to="#">WOMAN</NavLink>
@@ -94,17 +102,47 @@ export default function Header() {
         <MobileMenuIcon onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </MobileMenuIcon>
-        <Link to='/shoppingCart' style={{ all: 'unset' }}>
-        <Cart>
-          <ShoppingCart size={20} />
-        </Cart>
+
+        {isAuthenticated ? (
+          <div>
+            <p>
+              {user?.fullName}, {user?.role}
+            </p>
+            <div
+              onClick={() => {
+                dispatch(logout());
+              }}
+              style={{ cursor: "pointer", color: "blue" }}
+            >
+              Log out
+            </div>
+          </div>
+        ) : (
+          <>
+            <Link to="/login">Login</Link>
+            <Link to="/signup">Sign Up</Link>
+          </>
+        )}
+
+        <Link to="/shoppingCart" style={{ all: "unset" }}>
+          <Cart>
+            <ShoppingCart size={20} />
+          </Cart>
         </Link>
       </HeaderContainer>
       <MobileNav open={menuOpen}>
-        <NavLink to="/product" onClick={() => setMenuOpen(false)}>MEN</NavLink>
-        <NavLink to="#" onClick={() => setMenuOpen(false)}>WOMAN</NavLink>
-        <NavLink to="#" onClick={() => setMenuOpen(false)}>KIDS</NavLink>
-        <NavLink to="#" onClick={() => setMenuOpen(false)}>SALE</NavLink>
+        <NavLink to="/product" onClick={() => setMenuOpen(false)}>
+          MEN
+        </NavLink>
+        <NavLink to="#" onClick={() => setMenuOpen(false)}>
+          WOMAN
+        </NavLink>
+        <NavLink to="#" onClick={() => setMenuOpen(false)}>
+          KIDS
+        </NavLink>
+        <NavLink to="#" onClick={() => setMenuOpen(false)}>
+          SALE
+        </NavLink>
       </MobileNav>
     </>
   );

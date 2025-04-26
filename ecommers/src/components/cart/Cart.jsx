@@ -166,7 +166,7 @@ export default function ShoppingCart() {
       <SummarySection>
         <p style={{ fontSize: '14px', color: 'green' }}>Your order is eligible for FREE Delivery.</p>
         <Total>Subtotal ({cart.length} items): ₹{subtotal.toLocaleString()}</Total>
-       <Link to='/shoppingPayment'> <Button>Proceed to Buy</Button></Link>
+       <Link to='/payment'> <Button>Proceed to Buy</Button></Link>
       </SummarySection>
     </Container>
   );

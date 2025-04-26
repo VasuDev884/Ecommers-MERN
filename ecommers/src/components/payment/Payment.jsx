@@ -25,7 +25,7 @@ const cartItems = [
   }
 ];
 
-const ShoppingCart = () => {
+const ShoppingPayment = () => {
   const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const delivery = 20;
   const discount = 10;
@@ -97,7 +97,7 @@ const ShoppingCart = () => {
   );
 };
 
-export default ShoppingCart;
+export default ShoppingPayment;
 
 const Wrapper = styled.div`
   padding: 40px;
