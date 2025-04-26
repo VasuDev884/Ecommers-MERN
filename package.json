@@ -1,0 +1,21 @@
+{
+  "name": "ecommers-mern",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/VasuDev884/Ecommers-MERN#readme",
+  "bugs": {
+    "url": "https://github.com/VasuDev884/Ecommers-MERN/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VasuDev884/Ecommers-MERN.git"
+  },
+  "license": "ISC",
+  "author": "Abhimanyu , Vasudev",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install --prefix server && npm install --prefix ecommers && npm run build --prefix ecommers",
+    "start": "npm run start --prefix server"
+  }
+}
