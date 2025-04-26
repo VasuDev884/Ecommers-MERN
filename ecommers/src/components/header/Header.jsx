@@ -105,7 +105,9 @@ export default function Header() {
 
         {isAuthenticated ? (
           <div>
-            <p>{user?.fullName}</p>
+            <p>
+              {user?.fullName}, {user?.role}
+            </p>
             <div
               onClick={() => {
                 dispatch(logout());

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../redux/authSlice";
 
 const Container = styled.div`
@@ -80,6 +80,16 @@ const Footer = styled.p`
   color: #555;
 `;
 
+const Error = styled.div`
+  color: red;
+  text-align: center;
+  margin-top: 1rem;
+  border: 1px solid red;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #ffe6e6;
+`;
+
 // const Link = styled.span`
 //   color: green;
 //   cursor: pointer;
@@ -88,6 +98,7 @@ const Footer = styled.p`
 
 const LoginForm = () => {
   const [form, setForm] = useState({ email: "", password: "" });
+  const { loading, error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -99,7 +110,6 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Login:", form);
-    alert("Login Successful!");
 
     await dispatch(loginUser(form)).then((response) => {
       if (response.error) {
@@ -133,6 +143,8 @@ const LoginForm = () => {
 
       <Or>or</Or>
 
+      {error && <Error>{error}</Error>}
+
       <form onSubmit={handleSubmit}>
         <Label htmlFor="email">Email*</Label>
         <Input
@@ -155,7 +167,7 @@ const LoginForm = () => {
           autoComplete="off"
         />
 
-        <Button type="submit">Log In</Button>
+        <Button type="submit"> {loading ? "Logging in..." : "Login"}</Button>
       </form>
 
       <Footer>

@@ -28,10 +28,10 @@ export const SignUpUser = createAsyncThunk(
 export const logout = createAsyncThunk("auth/logout", async () => {
   try {
     await axiosInstance.post("/auth/logout");
-    return null; // Return null to indicate successful logout
+    return null;
   } catch (error) {
     console.error("Logout error:", error);
-    throw new Error("Logout failed"); // Handle logout error if needed
+    throw new Error("Logout failed");
   }
 });
 
@@ -72,7 +72,7 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = action.payload?.message || "Login failed";
       })
       // SignUp reducers
       .addCase(SignUpUser.pending, (state) => {
@@ -86,7 +86,7 @@ const authSlice = createSlice({
       })
       .addCase(SignUpUser.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = action.payload?.message || "Sign Up failed";
       })
       // Logout reducers
       .addCase(logout.pending, (state) => {
@@ -100,7 +100,7 @@ const authSlice = createSlice({
       })
       .addCase(logout.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = action.payload?.message || "Logout failed";
       })
       // Check user reducers
       .addCase(checkUser.pending, (state) => {
@@ -115,7 +115,7 @@ const authSlice = createSlice({
       .addCase(checkUser.rejected, (state, action) => {
         state.loading = false;
         state.isAuthenticated = false;
-        state.error = action.payload;
+        state.error = action.payload?.message || "Login failed";
       });
   },
 });

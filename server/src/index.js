@@ -19,12 +19,12 @@ app.use(cookieParser());
 app.use("/api/auth", require("./routes/auth"));
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../../frontend/dist")));
+  app.use(express.static(path.join(__dirname, "../../ecommers/dist")));
 
   app.use((req, res) => {
     res
-      .status(404)
-      .sendFile(path.join(__dirname, "../../frontend", "dist", "index.html"));
+      .status(200)
+      .sendFile(path.join(__dirname, "../../ecommers", "dist", "index.html"));
   });
 }
 

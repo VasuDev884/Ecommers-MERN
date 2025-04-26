@@ -1,23 +1,36 @@
 import "./App.css";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, lazy, Suspense } from "react";
-import Loader from "./components/Loader";
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
-import ProductPage from "./components/display/Display";
-import BertoozPage from "./components/collection/Collection";
-import Cart from "./components/cart/Cart";
-import ProductDetails from "./components/details/Details";
-import ShoppingPayment from "./components/payment/Payment";
-import SignupForm from "./components/auth/SignUp";
-import Login from "./components/auth/Login";
 import { Route, Routes, useLocation } from "react-router-dom";
-import ProtectedRoute from "./components/ProtectedRoute";
-import { useDispatch } from "react-redux";
+
+import Loader from "./components/Loader";
+
+const Header = lazy(() => import("./components/header/Header"));
+const Footer = lazy(() => import("./components/footer/Footer"));
+
+const ProductPage = lazy(() => import("./components/display/Display"));
+const BertoozPage = lazy(() => import("./components/collection/Collection"));
+const Cart = lazy(() => import("./components/cart/Cart"));
+const ProductDetails = lazy(() => import("./components/details/Details"));
+const ShoppingPayment = lazy(() => import("./components/payment/Payment"));
+const SignupForm = lazy(() => import("./components/auth/SignUp"));
+const Login = lazy(() => import("./components/auth/Login"));
+const ProtectedRoute = lazy(() => import("./components/ProtectedRoute"));
+
 import { checkUser } from "./redux/authSlice";
+
+const AdminDashboard = () => (
+  <div style={{ padding: "100px" }}>Admin Dashboard</div>
+);
+
+const WorkerDashboard = () => (
+  <div style={{ padding: "100px" }}>Worker Dashboard</div>
+);
 
 function App() {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
+  const { loading: authLoading } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (pathname) {
@@ -29,40 +42,50 @@ function App() {
     dispatch(checkUser());
   }, [dispatch]);
 
+  if (authLoading) {
+    return <Loader />;
+  }
+
   return (
     <Suspense fallback={<Loader />}>
       <Header />
 
       <Routes>
+        {/* Public routes */}
         <Route path="/" element={<BertoozPage />} />
         <Route path="/product" element={<ProductPage />} />
         <Route path="/details" element={<ProductDetails />} />
-
-        <Route path="*" element={<div style={{ padding: "100px" }}>404</div>} />
-
-        <Route
-          path="/admin"
-          element={
-            <ProtectedRoute allowedRoles={["admin"]}>
-              <div style={{ padding: "100px" }}>Admin</div>
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/worker"
-          element={
-            <ProtectedRoute allowedRoles={["worker"]}>
-              <div style={{ padding: "100px" }}>Worker</div>
-            </ProtectedRoute>
-          }
-        />
-
         <Route path="/shoppingCart" element={<Cart />} />
         <Route path="/payment" element={<ShoppingPayment />} />
-
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignupForm />} />
+
+        {/* Admin protected routes */}
+        <Route element={<ProtectedRoute allowedRoles={["admin"]} />}>
+          <Route path="/admin" element={<AdminDashboard />} />
+          {/* Add more admin routes here */}
+          <Route
+            path="/admin/products"
+            element={<div style={{ padding: "100px" }}>Manage Products</div>}
+          />
+          <Route
+            path="/admin/users"
+            element={<div style={{ padding: "100px" }}>Manage Users</div>}
+          />
+        </Route>
+
+        {/* Worker protected routes */}
+        <Route element={<ProtectedRoute allowedRoles={["worker"]} />}>
+          <Route path="/worker" element={<WorkerDashboard />} />
+          {/* Add more worker routes here */}
+          <Route
+            path="/worker/orders"
+            element={<div style={{ padding: "100px" }}>Process Orders</div>}
+          />
+        </Route>
+
+        {/* 404 route */}
+        <Route path="*" element={<div style={{ padding: "100px" }}>404</div>} />
       </Routes>
 
       <Footer />
