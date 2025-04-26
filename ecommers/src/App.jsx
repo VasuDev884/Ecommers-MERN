@@ -19,18 +19,16 @@ const ProtectedRoute = lazy(() => import("./components/ProtectedRoute"));
 
 import { checkUser } from "./redux/authSlice";
 
-const AdminDashboard = () => (
-  <div style={{ padding: "100px" }}>Admin Dashboard</div>
-);
+const style = { padding: "100px" };
 
-const WorkerDashboard = () => (
-  <div style={{ padding: "100px" }}>Worker Dashboard</div>
-);
+const AdminDashboard = () => <div style={style}>Admin Dashboard</div>;
+
+const WorkerDashboard = () => <div style={style}>Worker Dashboard</div>;
 
 function App() {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
-  const { loading: authLoading } = useSelector((state) => state.auth);
+  const { isChecking } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (pathname) {
@@ -42,7 +40,7 @@ function App() {
     dispatch(checkUser());
   }, [dispatch]);
 
-  if (authLoading) {
+  if (isChecking) {
     return <Loader />;
   }
 
@@ -66,11 +64,11 @@ function App() {
           {/* Add more admin routes here */}
           <Route
             path="/admin/products"
-            element={<div style={{ padding: "100px" }}>Manage Products</div>}
+            element={<div style={style}>Manage Products</div>}
           />
           <Route
             path="/admin/users"
-            element={<div style={{ padding: "100px" }}>Manage Users</div>}
+            element={<div style={style}>Manage Users</div>}
           />
         </Route>
 
@@ -80,12 +78,12 @@ function App() {
           {/* Add more worker routes here */}
           <Route
             path="/worker/orders"
-            element={<div style={{ padding: "100px" }}>Process Orders</div>}
+            element={<div style={style}>Process Orders</div>}
           />
         </Route>
 
         {/* 404 route */}
-        <Route path="*" element={<div style={{ padding: "100px" }}>404</div>} />
+        <Route path="*" element={<div style={style}>404</div>} />
       </Routes>
 
       <Footer />

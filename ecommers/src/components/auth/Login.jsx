@@ -98,7 +98,7 @@ const Error = styled.div`
 
 const LoginForm = () => {
   const [form, setForm] = useState({ email: "", password: "" });
-  const { loading, error } = useSelector((state) => state.auth);
+  const { isLoading, error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -117,11 +117,11 @@ const LoginForm = () => {
       } else {
         alert("Login successful!");
         if (response.payload?.role === "admin") {
-          navigate("/admin");
+          navigate("/admin", { replace: true });
         } else if (response.payload?.role === "customer") {
-          navigate("/");
+          navigate("/", { replace: true });
         } else if (response.payload?.role === "worker") {
-          navigate("/worker");
+          navigate("/worker", { replace: true });
         }
       }
     });
@@ -167,7 +167,7 @@ const LoginForm = () => {
           autoComplete="off"
         />
 
-        <Button type="submit"> {loading ? "Logging in..." : "Login"}</Button>
+        <Button type="submit"> {isLoading ? "Logging in..." : "Login"}</Button>
       </form>
 
       <Footer>

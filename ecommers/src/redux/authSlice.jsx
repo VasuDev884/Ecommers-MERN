@@ -50,7 +50,8 @@ export const checkUser = createAsyncThunk(
 const initialState = {
   user: null,
   isAuthenticated: false,
-  loading: false,
+  isChecking: false,
+  isLoading: false,
   error: null,
 };
 
@@ -62,60 +63,60 @@ const authSlice = createSlice({
     builder
       // Login reducers
       .addCase(loginUser.pending, (state) => {
-        state.loading = true;
+        state.isLoading = true;
         state.error = null;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
-        state.loading = false;
+        state.isLoading = false;
         state.isAuthenticated = true;
         state.user = action.payload;
       })
       .addCase(loginUser.rejected, (state, action) => {
-        state.loading = false;
+        state.isLoading = false;
         state.error = action.payload?.message || "Login failed";
       })
       // SignUp reducers
       .addCase(SignUpUser.pending, (state) => {
-        state.loading = true;
+        state.isLoading = true;
         state.error = null;
       })
       .addCase(SignUpUser.fulfilled, (state, action) => {
-        state.loading = false;
+        state.isLoading = false;
         state.isAuthenticated = true;
         state.user = action.payload;
       })
       .addCase(SignUpUser.rejected, (state, action) => {
-        state.loading = false;
+        state.isLoading = false;
         state.error = action.payload?.message || "Sign Up failed";
       })
       // Logout reducers
       .addCase(logout.pending, (state) => {
-        state.loading = true;
+        state.isLoading = true;
         state.error = null;
       })
       .addCase(logout.fulfilled, (state) => {
-        state.loading = false;
+        state.isLoading = false;
         state.isAuthenticated = false;
         state.user = null; // Clear user data on logout
       })
       .addCase(logout.rejected, (state, action) => {
-        state.loading = false;
+        state.isLoading = false;
         state.error = action.payload?.message || "Logout failed";
       })
       // Check user reducers
       .addCase(checkUser.pending, (state) => {
-        state.loading = true;
+        state.isChecking = true;
         state.error = null;
       })
       .addCase(checkUser.fulfilled, (state, action) => {
-        state.loading = false;
+        state.isChecking = false;
         state.isAuthenticated = true;
         state.user = action.payload;
       })
       .addCase(checkUser.rejected, (state, action) => {
-        state.loading = false;
+        state.isChecking = false;
         state.isAuthenticated = false;
-        state.error = action.payload?.message || "Login failed";
+        // state.error = action.payload?.message || "Login failed";
       });
   },
 });

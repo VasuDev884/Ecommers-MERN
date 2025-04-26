@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { SignUpUser } from "../../redux/authSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Container = styled.div`
   max-width: 400px;
@@ -88,6 +88,16 @@ const Footer = styled.p`
   color: #555;
 `;
 
+const Error = styled.div`
+  color: red;
+  text-align: center;
+  margin-top: 1rem;
+  border: 1px solid red;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #ffe6e6;
+`;
+
 // const Link = styled(Link)`
 //   color: green;
 //   cursor: pointer;
@@ -102,6 +112,7 @@ const SignupForm = () => {
   });
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { isLoading, error } = useSelector((state) => state.auth);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -123,11 +134,11 @@ const SignupForm = () => {
       } else {
         alert("Sign successful!");
         if (response.payload?.role === "admin") {
-          navigate("/admin");
+          navigate("/admin", { replace: true });
         } else if (response.payload?.role === "customer") {
-          navigate("/");
+          navigate("/", { replace: true });
         } else if (response.payload?.role === "worker") {
-          navigate("/worker");
+          navigate("/worker", { replace: true });
         }
       }
     });
@@ -148,6 +159,8 @@ const SignupForm = () => {
       </GoogleButton>
 
       <Or>or</Or>
+
+      {error && <Error>{error}</Error>}
 
       <form onSubmit={handleSubmit}>
         <Label htmlFor="name">Name*</Label>
@@ -188,7 +201,7 @@ const SignupForm = () => {
         />
 
         <Button type="submit" disabled={!isFormValid()}>
-          Sign Up
+          {isLoading ? "Sign in..." : "Sign up"}
         </Button>
       </form>
 
