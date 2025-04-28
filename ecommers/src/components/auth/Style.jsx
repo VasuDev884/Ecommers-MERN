@@ -61,6 +61,7 @@ export const Input = styled.input`
 export const Label = styled.label`
   display: block;
   font-weight: 500;
+  cursor: pointer;
   span {
     color: red;
   }

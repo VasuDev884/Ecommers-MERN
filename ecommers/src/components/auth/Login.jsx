@@ -75,6 +75,7 @@ const LoginForm = () => {
           Email <span>*</span>
         </Label>
         <Input
+          id="email"
           type="email"
           name="email"
           value={form.email}
@@ -88,6 +89,7 @@ const LoginForm = () => {
           Password <span>*</span>
         </Label>
         <Input
+          id="password"
           type="password"
           name="password"
           value={form.password}

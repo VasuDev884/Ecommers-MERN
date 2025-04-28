@@ -5,7 +5,7 @@ const cloudinary = require("../config/cloudinary");
 
 const signUp = async (req, res) => {
   try {
-    const { email, fullName, password, profilePic } = req?.body;
+    const { email, fullName, password } = req?.body;
 
     if (!email || !fullName || !password) {
       return res.status(400).json({ message: "Please fill all the fields" });
@@ -28,7 +28,6 @@ const signUp = async (req, res) => {
       email,
       fullName,
       password: hashPwd,
-      profilePic,
     });
 
     if (user) {

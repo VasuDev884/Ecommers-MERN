@@ -75,10 +75,11 @@ const SignupForm = () => {
       {error && <Error>{error}</Error>}
 
       <Form onSubmit={handleSubmit}>
-        <Label htmlFor="name">
+        <Label htmlFor="fullName">
           Name <span>*</span>
         </Label>
         <Input
+          id="fullName"
           name="fullName"
           type="text"
           autoComplete="off"
@@ -94,6 +95,7 @@ const SignupForm = () => {
           Email <span>*</span>
         </Label>
         <Input
+          id="email"
           type="email"
           name="email"
           autoComplete="off"
@@ -107,6 +109,7 @@ const SignupForm = () => {
           Password <span>*</span>
         </Label>
         <Input
+          id="password"
           type="password"
           name="password"
           maxLength={10}
